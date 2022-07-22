@@ -1,0 +1,119 @@
+
+
+
+
+
+	\documentclass[9pt,blue,xcolor=pdftex,dvipsnames,table,handout,notes]{beamer}
+
+
+
+	%	========================================================== 	Package
+			\usepackage{kotex}						% 한글 사용
+			\usepackage{amssymb,amsfonts,amsmath}	% 수학 수식 사용
+
+
+
+
+\usetheme{Warsaw}
+
+
+
+\title{ beamer color box}
+\author{김대희}
+
+
+
+\setbeamercolor{block}{fg=black}
+\setbeamercolor{block}{bg=black}
+\setbeamercolor{block title}{bg=red!30,fg=black}
+\setbeamercolor{block title}{bg=black!30,fg=black}
+\setbeamercolor{block title}{bg=black!30,fg=yellow}
+\setbeamercolor{block title}{bg=black!30,fg=red}
+
+
+
+
+
+
+\begin{document}
+
+
+
+
+	\begin{frame}
+
+	\begin{columns}
+	\column{20em}
+	\begin{block}{Title}Text
+	\end{block}
+	\begin{block}{Title}Text
+	\end{block}
+
+	\begin{block}{Title}Text
+	\end{block}
+
+	\end{columns}
+
+	\end{frame}
+
+
+
+
+	\begin{frame}
+	\begin{beamercolorbox}
+	[wd=50mm, sep=2pt, shadow=true, rounded=true]
+	{frametitle}\bfseries
+	폭50mm，이격거리2pt，그림자，둥근모서리，frmetitle
+	\end{beamercolorbox}
+	\end{frame}
+
+
+
+	\begin{frame}[c,plain]
+
+		\setbeamercolor{bgcolor}{fg=white,bg=blue}
+		\hfill
+		\begin{beamercolorbox}	[	rounded=true, 
+								center, 
+								shadow=true, 
+								sep=1em,
+								wd=6cm]{bgcolor}
+		Some text goes here...
+		\end{beamercolorbox}
+		\hfill 		\hfill
+
+		\vspace{2em}
+
+		\hfill
+		\setbeamercolor{bgcolor}{fg=white,bg=blue}
+		\begin{beamercolorbox}[rounded=false, center, shadow=true, wd=6cm, sep=1em]{bgcolor}
+		Some text goes here...
+		\end{beamercolorbox}
+		\hfill
+		\hfill
+
+	\end{frame}
+
+
+	\begin{frame}[c,plain]
+
+		\begin{columns}
+		\column{.7\linewidth}
+
+		\setbeamercolor{bgcolor}{fg=white,bg=blue}
+		\begin{beamercolorbox}[rounded=true, center, shadow=true, wd=6cm]{bgcolor}
+		Some text goes here...
+		\end{beamercolorbox}
+
+		\setbeamercolor{bgcolor}{fg=white,bg=blue}
+		\begin{beamercolorbox}[rounded=false, center, shadow=true, wd=6cm, sep=1em]{bgcolor}
+		Some text goes here...
+		\end{beamercolorbox}
+
+		\end{columns}
+
+	\end{frame}
+
+
+
+\end{document}

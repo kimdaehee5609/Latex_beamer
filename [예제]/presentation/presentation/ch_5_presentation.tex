@@ -1,0 +1,363 @@
+\documentclass{beamer}
+
+
+\usepackage{kotex}
+\usepackage{hyperref}
+%\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage[ps]{hfontsel} 
+\usepackage{enumerate}
+% \usepackage{setspace}
+%\onehalfspacing
+
+
+%\usetheme{Madrid} % Beamer theme v 3.0
+  \setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
+\usetheme{Warsaw}
+ \usefonttheme[onlysmall]{structurebold}
+%\usecolortheme{lily} % Beamer color theme
+\setbeamercovered{dynamic}
+
+\begin{document}
+
+\author{조남운\\\url{mailto:namun.cho@gmail.com}}
+\title{수학식 표현}
+\date{2008.2.20}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+
+%\chapter{수학}\label{ch:math}
+
+%\ref{ch:math}장에서는 수식을 다루는 법을 설명한다. 여기에서 다루는 수학은 엄밀히 말하자면 \LaTeX의 표준 방식이라기 보다는 $\mathcal{AMS}$-\TeX라고 할 수 있다. AMS \TeX는 미국 수학회에서 만든 수식입력을 위한 확장이다. 이 확장을 이용하기 위해서는 전처리부에 다음과 같이 입력하자. 
+
+\begin{frame}[fragile]
+\begin{block}{$\mathcal{AMS}$-\TeX}<1->
+	\begin{itemize}
+		\item 미국 수학회(American Mathematical Society)에서 만든 수학 패키지
+		\item 대부분의 수학 표현은 $\mathcal{AMS}$-\TeX을 이용하고 있음. 
+		\item 자세한 내용은 $\mathcal{AMS}$-\TeX 매뉴얼을 참조할 것. 
+		\url{http://www.ams.org/tex/amstex.html}
+	\end{itemize}
+
+\end{block}
+\begin{block}{$\mathcal{AMS}$-\TeX패키지 선언}<2->
+\begin{center}
+\begin{verbatim}
+\usepackage{amssymb, amsfonts, amsmath}
+\end{verbatim}
+\end{center}
+\end{block}
+\end{frame}
+\section{수식모드}
+
+
+\begin{frame}[fragile]
+\frametitle{{\TeX에서 수식을 쓰는 법}}
+%한글과 컴퓨터사에서 개발한 국민 워드인 아래한글 시리즈의 수식을 써 본 사람이라면 \TeX의 수식을 훨씬 쉽게 이해할 수 있을 것이다. 사실 아래한글의 수식 입력법은 \TeX의 것을 차용했다고 보아도 무방하다. 다른 점은 예약어 목록 일부가 다르다는 것과 함께 아래한글의 경우는 그냥 예약어를 쓰는 반면, \TeX에서는 $\backslash$과 함께 써야 한다는 것 정도이다. \TeX에서 수식모드는 크게 두 가지 방법으로 쓸 수 있다. 
+\begin{block}{두 가지 방법}
+
+\begin{enumerate}[{방법}1.]
+\item <1>\$와 \$ 사이에 수식을 넣는 법 (한글워드프로세서의 수식과 유사) : \verb!$수식$! :이때 수식은 한 줄 사이즈로 축약됨. ex) $\lim_{I\rightarrow\infty}\sum_{i=0}^{I}p_{i}q_{i}$
+\item <2>별도의 수식 환경을 불러 쓰는 법 
+\begin{block}{}
+	\begin{center}
+	\begin{verbatim}
+\begin{equation*}
+수식
+\end{equation*}
+	\end{verbatim}
+	\end{center}
+	
+\begin{equation*}
+\lim_{I\rightarrow\infty}\sum_{i=0}^{I}p_{i}q_{i}
+\end{equation*}
+\end{block}
+\end{enumerate}
+
+\end{block}
+
+
+\end{frame}
+
+
+%첫번째 방법은 아래한글과 거의 유사하게 수식을 부를 수 있다. 이것은 정렬방식을 지정하지 않은 표(아래한글에서는 `글자로 취급'과 비슷하다)와도 비슷하게, 문장 사이에 수식을 넣을 수 있다. 가령 유명한 오일러의 공식인 $e^{\pi i }+1=0$은 이렇게 문장에 쓸 땐 첫번째 방법을 쓰고, 번호를 매기는 식으로 쓰려면 아래와 같이 쓸 수 있는 것이다. 
+
+\begin{frame}[fragile]
+\frametitle{수식의 번호}
+\begin{block}{예제}<1->
+\begin{verbatim}
+\begin{equation}
+     e^{\pi i }+1=0
+\end{equation}
+\end{verbatim}
+\end{block}
+
+\begin{block}{결과}<2->
+\begin{equation}
+e^{\pi i }+1=0
+\end{equation}
+\end{block}
+
+%여기에서 수식 번호는 (장번호.수식번호)의 형식으로 나타나고 있다. 이 수식을 붙이는 방식은 전처리부(프리앰블)에서 바꿀 수도 있고, 이 장에서만 임시로 바꿀 수도 있다. %번호 방식 넣을것. 
+
+%한편, 이 두 가지 식 표현법은 정렬 방식 외에도 다른 점이 있는데, 첫번째 방식의 경우는 무조건 세로 위치를 한 줄에 들어가도록 표현한다는 것이다. 이는 적분기호나 시그마 같은 합기호를 쓸 경우 잘 보인다. 즉, $\sum_{i=0}^{100}p_{i}q_{i}$와 아래의 식을 비교해 보라. 어떤 의미인지 쉽게 이해할 수 있을 것이다. 
+
+\begin{block}{수식번호 없는 환경의 예}<3->
+\begin{center}
+\begin{verbatim}
+\begin{equation*}
+     \sum_{i=0}^{100}p_{i}q_{i}
+\end{equation*}
+\end{verbatim}
+\end{center}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{수식모드와 (일반적인)텍스트모드의 다른 점}
+
+\begin{block}{}
+\begin{enumerate}[차이점1.]
+\item <1->띄어쓰기는 의미가 없다. 아무리 띄어쓰기(스페이스바)를 해도 \TeX은 모두 무시한다. 
+\item <2->수식 모드 내에서는 일반 모드 내에서는 쓸 수 없었던 예약어(수식용 예약어)들을 쓸 수 있다.
+\item <3->수식 모드 내에서 일반 모드같은 조판을 하기 위해서는 특수한 예약어를 사용해야 한다. 
+\item <4->수식 모드 내에서는 이탤릭체가 기본형이다.
+\end{enumerate}
+
+
+\end{block}
+\end{frame}
+\section{수식의 표현법}
+
+\subsection{기초적 용법}
+
+\begin{frame}[fragile]
+\frametitle{박사가 사랑했던 오일러의 공식}
+
+\begin{block}{}
+\begin{equation*}
+     e^{\pi i}+1=0
+\end{equation*}
+\end{block}
+
+\begin{block}{}
+\begin{center}
+\begin{verbatim}
+\begin{equation*}
+     e^{\pi i}+1=0
+\end{equation*}
+\end{verbatim}
+\end{center}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+%일반적인 다항식을 표현해보자. 아래는 2차방정식의 일반해이다. 
+\begin{block}{분수와 특수기호, 루트가 있는 식}
+\begin{equation*}
+     x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}
+\end{equation*}
+\end{block}
+
+%위 식은 아래와 같은 방법으로 표현한다.
+
+\begin{block}{수식}
+\begin{center}
+\begin{verbatim}
+\begin{equation*}
+     x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}
+\end{equation*}
+\end{verbatim}
+\end{center}
+\end{block}
+
+\begin{block}{기초용법}
+\verb!\frac{A}{B}! : $\frac{A}{B}$ \qquad\verb!\sqrt{2}! : $\sqrt{2}$ \qquad\verb!\pm! : $\pm$
+\end{block}
+\end{frame}
+
+
+%\verb!equation*! 환경은 숫자가 붙지 않는 완전한 수식이다.\footnote{강제로 번호나 표식을 붙이고 싶다면 $\backslash$tag\{\} 명령을 쓰면 된다.}\verb~\frac{분자}{분모}~은 분수를 표현할 때 쓴다. 루트는 \verb~\sqrt{}~를 쓰며, \verb!\pm!는 $\pm$을, 상첨자(제곱)은 \verb!^!으로 나타내고 있다. 중괄호 \{\}는 묶여야만 하는 단위를 명시하는 기능이 있다. 가령 \fbox{$a^{2}$}는 \verb!a^{2}!로도 표현할 수 있지만, \verb!a^2!로도 표현해도 똑같은 모양으로 나타나게 된다. 하지만, \fbox{$a^{4\pi}$}같은 것은 중괄호 없이 표현하는 것이 불가능하다. 중괄호를 쓰지 않고 \verb!a^4\pi!와 같이 쓰면 \fbox{$a^4\pi$} 처럼 되게 된다. 물론 이 모든 수식들은 한줄짜리 약식 수식으로도 쓸 수 있다. 같은 내용을 두 개의 \$ 사이에 넣으면 된다. 
+
+\subsection{첨자 있는 화살표}
+
+
+\begin{frame}[fragile]
+
+\frametitle{첨자 있는 화살표, , 편미분, 하첨자, 강제 태그, 레이블}
+
+\begin{block}{}
+\verb!X \xleftarrow[A]{B} Y!\qquad$X\xleftarrow[A]{B}Y$
+\end{block}
+
+\begin{block}{}
+\begin{equation*}
+  F\times \triangle[n-1]
+  \xrightarrow[\Gamma]{\partial_{0}\alpha(b)}
+  E^{\partial_{0}b} \tag{임시태그}\label{eq:tmp}
+\end{equation*}
+위 \ref{eq:tmp}식은 $\cdots$ (후략)
+\end{block}
+
+%상 하첨자가 들어가는 화살표는 \verb!\xrightarrow[하첨자]{상첨자}!를 쓴다. 물론 상/하 화살표, 왼쪽으로 향하는 화살표에도 사용할 수 있다.\footnote{원래 쓰던 @$>>>$식의 표현은 이제 사용할 수 없다. }
+
+\begin{block}{}
+\begin{center}
+\begin{verbatim}
+\begin{equation*}
+  F\times \triangle[n-1]
+  \xrightarrow[\Gamma]{\partial_{0}\alpha(b)}
+  E^{\partial_{0}b} \tag{임시태그}\label{eq:tmp}
+\end{equation*}
+위 \ref{eq:tmp}식은 $\cdots$ (후략)
+\end{verbatim}
+\end{center}
+\end{block}
+
+\end{frame}
+
+\subsection{적분}
+
+\begin{frame}[fragile]
+
+\frametitle{적분, sumation, align환경}
+
+\begin{block}{}
+\begin{center}
+\begin{verbatim}
+\begin{align*}
+  x&=\int_{-\infty}^{\infty}\log_{e}\gamma_{t}^{2}dt\\
+  y&=\max_{x_{1},\cdots,x_{n}} 
+    Eu(w[R_{0}+
+    \sum_{i=0}^{n}x_{i}(\tilde{R}_{i}-R_{0})])
+\end{align*}
+\end{verbatim}
+\end{center}
+
+\end{block}
+
+\begin{block}{}
+\begin{align*}
+  x&=\int_{-\infty}^{\infty}\log_{e}\gamma_{t}^{2}dt\\
+  \mathcal{L}&=\max_{x_{1},\cdots,x_{n}} 
+    Eu(w[R_{0}+\sum_{i=0}^{n}x_{i}(\tilde{R}_{i}-R_{0})])
+\end{align*}
+\end{block}
+\end{frame}
+
+
+\subsection{경우의 수}
+%표에서 보았던 \&와 $\backslash\backslash$가 사용되고 있음을 알 수 있다. 이는 이어서 살펴볼 행렬에도 똑같이 적용된다. 
+
+\begin{frame}[fragile]
+
+\frametitle{경우의 수(cases환경), text모드, 폰트 조정}
+
+\begin{block}{}
+\begin{equation*}
+P_{r-j}=
+	\begin{cases}
+		0&\text{if $r-j$ is odd},\\
+		r!(-1)^{2n}&n\in\mathbb{N}.
+	\end{cases}
+\end{equation*}
+\end{block}
+
+\begin{block}{}
+\begin{center}
+\begin{verbatim}
+\begin{equation*}
+P_{r-j}=
+     	\begin{cases}
+	          	0&\text{if $r-j$ is odd},\\
+          		r!(-1)^{2n}&n\in\mathbb{N}.
+     	\end{cases}
+\end{equation*}
+\end{verbatim}
+\end{center}
+\end{block}
+
+\end{frame}
+
+
+\subsection{행렬}
+
+\begin{frame}[fragile]
+%\verb!\quad,\qquad!는 수식 환경에서 띄어쓰기를 할 때 쓰는 명령어이다. gather*환경은 여러 개의 수식을 정렬하지 않고 모으는 데 쓰인다. 
+\frametitle{행렬, 띄어쓰기, gather 환경}
+
+\begin{block}{}
+\begin{gather*}
+\begin{matrix}	 	0 & 1 \\ 1 & 0 \end{matrix} \quad
+\begin{pmatrix}	0 & -i \\ i & 0 \end{pmatrix} \quad
+\begin{bmatrix}	0 & 1 \\ 1 & 0 \end{bmatrix} \\
+\begin{vmatrix}	a & b \\ c & d \end{vmatrix} \qquad
+\begin{Vmatrix}	0 & 1 \\ 1 & 0 \end{Vmatrix} \qquad
+\end{gather*}
+
+\end{block}
+
+\begin{block}{}
+\begin{center}
+\begin{verbatim}
+\begin{gather*}
+  \begin{matrix}	 	0 & 1 \\ 1 & 0 \end{matrix} \quad
+  \begin{pmatrix}	0 & -i \\ i & 0 \end{pmatrix} \quad
+  \begin{bmatrix}	0 & 1 \\ 1 & 0 \end{bmatrix} \\
+  \begin{vmatrix}	a & b \\ c & d \end{vmatrix} \qquad
+  \begin{Vmatrix}	0 & 1 \\ 1 & 0 \end{Vmatrix} \qquad
+\end{gather*}
+\end{verbatim}
+\end{center}
+
+\end{block}
+\end{frame}
+
+
+\subsection{align 환경}
+
+\begin{frame}[fragile]
+%수식을 풀어나가는 과정을 묘사할 때처럼 여러 줄의 수식을 정렬해서 나타내야 할 경우, align환경을 이용한다. 이때, 정렬해야 할 기준에 \&을 넣는다. 아래 예에서는 등호를 기준으로 정렬을 하고 있다. 이 밖에도 여러 가지 수학 환경들이 있으니, $\mathcal{AMS}$-\TeX 매뉴얼을 참조하라. 
+
+\begin{block}{}
+\begin{align*}
+ax^{2}+bx+c &= 0\\
+a\left( x+\frac{b}{2a}\right)^{2}-\frac{b^{2}}{4a}+c&=0\\
+\therefore x&=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}
+\end{align*}
+
+\end{block}
+\begin{block}{}
+\begin{center}
+\begin{verbatim}
+\begin{align*}
+  ax^{2}+bx+c &= 0\\
+  a\left( x+\frac{b}{2a}\right)^{2}
+    -\frac{b^{2}}{4a}+c&=0\\
+  \therefore x&=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}
+\end{align*}
+\end{verbatim}
+\end{center}
+
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{}
+\begin{center}
+\huge
+	수고하셨습니다!
+\end{center}
+\end{block}
+\end{frame}
+
+
+\end{document}
